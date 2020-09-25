@@ -1,0 +1,356 @@
+'scopeName': 'source.filter'
+'name': 'PoE Item Filter'
+'fileTypes': [
+  'filter'
+]
+'patterns': [
+  { 'include': '#commented_line' }
+  {
+    'name': 'block.filter'
+    'begin': "(^|\uFEFF)\\s*((Show)|(Hide))((\\s+(#+.*))|\\s.*)$"
+    'beginCaptures':
+      '2':
+        'name': 'keyword.block.show.filter'
+      '3':
+        'name': 'keyword.block.hide.filter'
+      '6':
+        'name': 'comment.trailing.filter'
+    'end': "(?=^\\s*(Show|Hide))"
+    'patterns': [
+      { 'include': '#commented_line' }
+      { 'include': '#empty_line' }
+      # Conditionals
+      {
+        'name': 'class.filter'
+        'begin': '^\\s*(Class)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.class.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#string' }
+          { 'include': '#partial_string' }
+          { 'include': '#word' }
+        ]
+      }
+      {
+        'name': 'base-type.filter'
+        'begin': '^\\s*(BaseType)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.base-type.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#string' }
+          { 'include': '#partial_string' }
+          { 'include': '#word' }
+        ]
+      }
+      {
+        'name': 'identified.filter'
+        'begin': '^\\s*(Identified)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.identified.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#boolean' }
+        ]
+      }
+      {
+        'name': 'corrupted.filter'
+        'begin': '^\\s*(Corrupted)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.corrupted.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#boolean' }
+        ]
+      }
+      {
+        'name': 'elder-item.filter'
+        'begin': '^\\s*(ElderItem)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.elder-item.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#boolean' }
+        ]
+      }
+      {
+        'name': 'shaper-item.filter'
+        'begin': '^\\s*(ShaperItem)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.shaper-item.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#boolean' }
+        ]
+      }
+      {
+        'name': 'shaped-map.filter'
+        'begin': '^\\s*(ShapedMap)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.shaped-map.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#boolean' }
+        ]
+      }
+      {
+        'name': 'elder-map.filter'
+        'begin': '^\\s*(ElderMap)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.elder-map.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#boolean' }
+        ]
+      }
+      {
+        'name': 'item-level.filter'
+        'begin': '^\\s*(ItemLevel)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.item-level.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#operator' }
+          { 'include': '#number' }
+        ]
+      }
+      {
+        'name': 'drop-level.filter'
+        'begin': '^\\s*(DropLevel)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.drop-level.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#operator' }
+          { 'include': '#number' }
+        ]
+      }
+      {
+        'name': 'quality.filter'
+        'begin': '^\\s*(Quality)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.quality.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#operator' }
+          { 'include': '#number' }
+        ]
+      }
+      {
+        'name': 'rarity.filter'
+        'begin': '^\\s*(Rarity)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.rarity.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#operator' }
+          { 'include': '#rarity' }
+        ]
+      }
+      {
+        'name': 'sockets.filter'
+        'begin': '^\\s*(Sockets)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.sockets.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#operator' }
+          { 'include': '#number' }
+        ]
+      }
+      {
+        'name': 'linked-sockets.filter'
+        'begin': '^\\s*(LinkedSockets)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.linked-sockets.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#operator' }
+          { 'include': '#number' }
+        ]
+      }
+      {
+        'name': 'socket-group.filter'
+        'begin': '^\\s*(SocketGroup)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.socket-group.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#socket_group' }
+        ]
+      }
+      {
+        'name': 'height.filter'
+        'begin': '^\\s*(Height)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.height.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#operator' }
+          { 'include': '#number' }
+        ]
+      }
+      {
+        'name': 'width.filter'
+        'begin': '^\\s*(Width)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.cond.width.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#operator' }
+          { 'include': '#number' }
+        ]
+      }
+      # Actions
+      {
+        'name': 'set-border-color.filter'
+        'begin': '^\\s*(SetBorderColor)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.action.set-border-color.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#number' }
+          { 'include': '#trailing_comment' }
+        ]
+      }
+      {
+        'name': 'set-text-color.filter'
+        'begin': '^\\s*(SetTextColor)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.action.set-text-color.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#number' }
+          { 'include': '#trailing_comment' }
+        ]
+      }
+      {
+        'name': 'set-background-color.filter'
+        'begin': '^\\s*(SetBackgroundColor)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.action.set-background-color.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#number' }
+          { 'include': '#trailing_comment' }
+        ]
+      }
+      {
+        'name': 'play-alert-sound.filter'
+        'begin': '^\\s*(PlayAlertSound)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.action.play-alert-sound.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#number' }
+          { 'include': '#word' }
+          { 'include': '#trailing_comment' }
+        ]
+      }
+      {
+        'name': 'play-alert-sound.filter'
+        'begin': '^\\s*(PlayAlertSoundPositional)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.action.play-alert-sound.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#number' }
+          { 'include': '#word' }
+          { 'include': '#trailing_comment' }
+        ]
+      }
+      {
+        'name': 'set-font-size.filter'
+        'begin': '^\\s*(SetFontSize)\\s'
+        'beginCaptures':
+          '1':
+            'name': 'keyword.action.set-font-size.filter'
+        'end': '\\s*$'
+        'patterns': [
+          { 'include': '#number' }
+          { 'include': '#trailing_comment' }
+        ]
+      }
+      { 'include': '#unknown' }
+    ]
+  }
+  { 'include': '#unknown_line' }
+]
+'repository':
+  'commented_line':
+    'name': 'comment.line.filter'
+    # A byte-order mark will appear in some files.
+    'match': '(^|\uFEFF)\\s*#+.*$'
+  'unknown_line':
+    'name': 'line.unknown.filter'
+    'match': '(^|\uFEFF)[^\r\n]+$'
+  'empty_line':
+    'name': 'line.empty.filter'
+    'match': '(^|\uFEFF)\\s*$'
+  'trailing_comment':
+    'name': 'comment.trailing.filter'
+    'match': '#.+$'
+  'unknown':
+    'name': 'line.unknown.filter'
+    'match': '^.*$'
+  'number':
+    'match': '\\s*(([0-9]+)|("[0-9]+"))'
+    'captures':
+      '1':
+        'name': 'constant.number.filter'
+  'word':
+    'name': 'string.word.filter'
+    'match': '\\s*([A-Za-z\u00F6\\-]+)'
+  'string':
+    'match': '\\s*(\"[^"]*\")'
+    'captures':
+      '1':
+        'name': 'string.quotation.filter'
+  'partial_string':
+    'match': '\\s*(\"[^"\n\r]*)$'
+    'captures':
+      '1':
+        'name': 'string.partial-quotation.filter'
+  'boolean':
+    'match': '(?i)\\s*((True|False)|("(True|False)"))'
+    'captures':
+      '1':
+        'name': 'string.boolean.filter'
+  'rarity':
+    'match': '\\s*(("(Normal|Magic|Rare|Unique)")|(Normal|Magic|Rare|Unique))'
+    'captures':
+      '1':
+        'name': 'string.rarity.filter'
+  'socket_group':
+    'match': '(?i)\\s*(([rgbw]+)|("[rgbw]+"))'
+    'captures':
+      '1':
+        'name': 'string.socket-group.filter'
+  'operator':
+    'match': '\\s*(>=|<=|>|<|=)'
+    'captures':
+      '1':
+        'name': 'keyword.operator.filter'
